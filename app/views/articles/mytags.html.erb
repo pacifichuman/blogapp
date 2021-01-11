@@ -1,0 +1,30 @@
+<h1>Listing all articles</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Posted by</th>
+  </tr>
+ 
+  <% @articles.each do |article| %>
+    <% @tags.each do |tag| %>
+
+      <% if( tag.user == current_user && tag.user == article.user ) %>
+
+        <tr>
+          <td><%= article.title %></td>
+          <td><%= article.description %></td>
+          <td><%= article.user.username %></td>
+        </tr>
+
+      <% end %>
+    <% end %>
+  <% end %>
+
+</table>
+
+
+<p>
+  <%= link_to "Home", articles_path %>
+</p>

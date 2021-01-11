@@ -1,0 +1,38 @@
+<h1>Listing all articles</h1>
+
+<% if logged_in? %>
+  <p>
+    <%= link_to "logout", logout_path %>
+    <%= link_to "myarticles", myarticles_path %>
+    <%= link_to "mytags", mytags_path %>
+  </p>
+<% else %>
+  <p>
+    <%= link_to "login", login_path %>/
+    <%= link_to "signup", signup_path %>
+  </p>
+<% end %>
+
+<table>
+ <tr>
+  <th>Title</th>
+  <th>Description</th>
+  <th>Posted by</th>
+ </tr>
+ <% @articles.each do |article| %>
+
+
+ <tr>
+  <td><%= article.title %></td>
+  <td><%= article.description %></td>
+  <td><%= article.user.username %></td>
+ </tr>
+ <% end %>
+
+</table>
+
+<% if logged_in? %>
+  <p>
+    <%= link_to "Create new article", new_article_path %>
+  </p>
+  <% end %>
